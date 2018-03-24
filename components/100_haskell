@@ -1,0 +1,5 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+curl -sSL https://get.haskellstack.org/ | sh
+stack ghci

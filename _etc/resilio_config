@@ -1,0 +1,23 @@
+{
+   "device_name": "Resilio Sync Device",
+// "listening_port" : 0, // 0 - randomize port
+
+// "storage_path" : "/home/user/.sync",
+// "pid_file" : "/var/run/resilio/resilio.pid",
+  "use_upnp" : true,
+  "download_limit" : 0,
+  "upload_limit" : 0,
+
+/* directory_root path defines where the WebUI Folder browser starts (linux only). Default value is / */
+//  "directory_root" : "/home/user/MySharedFolders/",
+  "webui" :
+  {
+    "listen" : "127.0.0.1:8123" // remove field to disable WebUI
+
+/* preset credentials. Use password or password_hash */
+//  ,"login" : "admin"
+//  ,"password" : "password" // (not recommended, better use 'password_hash_unified')
+//  ,"dir_whitelist" : [ "/home/user/MySharedFolders/personal", "work" ]
+  }
+
+}

@@ -1,0 +1,16 @@
+# See documentation here https://help.github.com/articles/ignoring-files
+# Recommended files here https://github.com/github/gitignore
+.DS_Store
+.dropbox
+.*
+*.log
+*~
+[~]*
+*.orig
+*.zip
+__pycache__/*
+*/__pycache__
+Icon*
+bin/*
+temp/*
+*.sqlite3

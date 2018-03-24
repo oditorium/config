@@ -1,0 +1,22 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+source ./ethereum_dev
+
+echo ====================================================
+echo INSTALLING VNC AND FIREFOX
+echo ====================================================
+
+source ../components/300_vnc
+source ../components/300_firefox
+
+echo ====================================================
+echo VERSIONS
+echo ====================================================
+
+echo === NODE ===
+nodejs -v
+npm -v
+
+echo === ETHEREUM ===
+truffle version

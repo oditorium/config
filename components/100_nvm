@@ -1,0 +1,10 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+apt -y install build-essential
+apt -y install libssl-dev
+
+curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh -o install_nvm.sh
+bash install_nvm.sh
+
+nvm --version

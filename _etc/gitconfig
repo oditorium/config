@@ -1,0 +1,85 @@
+[user]
+	name = Stefan K Loesch
+	email = sklgit@oditorium.com
+[core]
+	editor = vi
+	excludesfile = ~/.gitignore_global
+	ignorecase = false
+
+[alias]
+        s = status
+	rl = reflog
+	
+	a = add
+        co = checkout
+	ci = commit
+        cii = commit --amend
+	ca = commit -a
+	caa = commit -a --amend
+	caqq = commit -a -m TEMP-COMMIT-NEEDS-TO-BE-CHANGED
+	cad = commit  -m ********doc README.php
+	cadd = commit -m ********+  db/dbconnect.php
+        
+	l = log --pretty=oneline  --graph --abbrev-commit -10 --decorate
+        ll = log --pretty=oneline  --graph --abbrev-commit --decorate
+        lla = log --pretty=oneline  --graph --abbrev-commit --decorate --all
+	lb = log --graph --all --decorate --simplify-by-decoration --oneline
+	
+	b = branch
+	be = branch --edit-description
+	bm = branch --merged
+	bn = branch --no-merged
+	
+	dt = difftool
+	mt = mergetool
+
+	rbi = rebase -i
+	rb1 = rebase -i HEAD^^^^^^^^^^
+	rb2 = rebase -i HEAD^^^^^^^^^^^^^^^^^^^^
+	rb3 = rebase -i HEAD^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	applyto = rebase -i
+	cp = cherry-pick -x 
+	rba = rebase --abort
+	rbs = rebase --skip
+	rbc = rebase --continue
+	rbr = checkout --theirs README.md
+
+	rsh = reset --hard
+	rss = reset --soft
+	rsd = reset HEAD^
+
+	p = stash
+	pp = stash pop
+	pl = stash list
+
+	rh = reset HEAD
+	rhd = reset HEAD -- README.php
+
+	d1 = diff HEAD^
+	d2 = diff HEAD^^
+	d3 = diff HEAD^^^
+
+	f = fetch
+	fa = fetch --all -p
+
+	pdm = push dev +master
+	plm = push lab +master
+
+	m = merge
+	mdd = merge dev/dev
+
+
+[diff]
+	tool = opendiff
+[difftool]
+	prompt = 0
+[merge]
+	tool = opendiff
+[mergetool]
+	prompt = 0
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[push]
+	default = simple

@@ -1,0 +1,19 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+#cd "${0%/*}"
+
+apt -y update
+apt -y upgrade
+apt -y autoremove
+
+apt -y install git
+apt -y install supervisor
+apt -y install python3 python3-pip
+pip3 install --upgrade pip
+pip3 install jupyter
+#jupyter notebook --allow-root
+apt -y install build-essential
+
+cp ../_etc/gitconfig ~/.gitconfig
+cp ../_etc/gitignore_global ~/.gitignore_global

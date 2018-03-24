@@ -1,0 +1,9 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+apt -y install nodejs
+apt -y install npm
+apt -y install build-essential
+
+nodejs -v
+npm -v

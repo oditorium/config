@@ -1,0 +1,48 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+# http://www.techtonet.com/how-to-install-and-execute-truffle-on-an-ubuntu-16-04/
+
+echo ====================================================
+echo INSTALLING BASICS
+echo ====================================================
+
+source ../components/000_init
+apt-get -y install curl git vim build-essential
+
+
+echo ====================================================
+echo INSTALLING NODE
+echo ====================================================
+
+source ../components/100_node_ppa
+
+
+echo ====================================================
+echo INSTALLING ETHEREUM DEV
+echo ====================================================
+
+npm install -g express
+npm install -g truffle
+npm install -g mocha
+#npm install -g ethereumjs-testrpc
+#npm install -g webpack
+#npm install -g ganache-cli
+
+
+echo ====================================================
+echo INSTALLING RESILIO
+echo ====================================================
+
+source ../components/300_resilio
+
+echo ====================================================
+echo VERSIONS
+echo ====================================================
+
+echo === NODE ===
+nodejs -v
+npm -v
+
+echo === ETHEREUM ===
+truffle version

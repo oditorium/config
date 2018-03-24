@@ -1,0 +1,17 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+# https://help.resilio.com/hc/en-us/articles/206178924-Installing-Sync-package-on-Linux
+echo "deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free" | tee /etc/apt/sources.list.d/resilio-sync.list
+wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc | apt-key add -
+apt update
+apt -y install resilio-sync
+
+cp ../_etc/resilio_config ~/.rslsync.config
+cp ../_etc/resilio_run ~/resilio_run
+
+rslsync --help | awk 'NR==2'
+
+# run resilio (note: data is stored in ~; must start it from there)
+#cd ~
+#rslsync --config ~/config/_etc/rslsync.config
