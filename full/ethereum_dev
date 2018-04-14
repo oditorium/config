@@ -25,9 +25,7 @@ echo ====================================================
 npm install -g express
 npm install -g truffle
 npm install -g mocha
-#npm install -g ethereumjs-testrpc
-#npm install -g webpack
-#npm install -g ganache-cli
+npm install -g ganache-cli
 
 
 echo ====================================================
