@@ -1,0 +1,16 @@
+cp ../_etc/home/profile ~/.profile
+cp ../_etc/home/gitconfig ~/.gitconfig
+cp ../_etc/home/gitignore_global ~/.gitignore_global
+cp ../_etc/home/vimrc ~/.vimrc
+cp ../_etc/home/locations ~/.locations
+cp ../_etc/home/bash_aliases ~/.bash_aliases
+
+
+mkdir -p ~/bin
+cp ../_etc/bin/* ~/bin/
+chmod +x ~/bin/*
+
+mkdir -p ~/.vim/pack/bundle/start
+pushd ~/.vim/pack/bundle/start
+git clone https://github.com/tomlion/vim-solidity.git
+popd

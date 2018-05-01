@@ -14,6 +14,6 @@ pip3 install --upgrade pip
 pip3 install jupyter
 #jupyter notebook --allow-root
 apt -y install build-essential
+apt -y install bc
 
-cp ../_etc/gitconfig ~/.gitconfig
-cp ../_etc/gitignore_global ~/.gitignore_global
+source ./001_init_part2
