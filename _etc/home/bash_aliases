@@ -1,0 +1,29 @@
+echo "executing ~/.bash_aliases"
+
+# DIRECTORY - LISTING
+alias ll="ls -lFh"                      # long
+alias lll="ls -lFh  | more"             #   -> more
+alias lr="ls -RF"                       # recursive
+alias lrr="ls -RF | more"               #   -> more
+alias llr="ls -lRFh"                    # long, recursive
+alias llrr="ls -lRFeh | more"           #   -> more
+alias la="ls -aF"                       # all
+alias lla="ls -alFh"                    # long, all
+alias llaa="ls -alFh | more"            #   -> more
+
+# DIRECTORY - PUSH/POP
+alias pd="pushd"
+alias pp="popd"
+alias ppp="popd -n 100"
+
+# DISK USAGE
+alias du0="du -h -d 0"  # disk usage (level 0)
+alias du1="du -h -d 1"  # disk usage (level 1)
+
+# NETSTAT
+alias ns="netstat -tulpn"
+
+# SUNDRY
+alias jn="jupyter notebook --allow-root"
+function gloc() { loc; pushd `loc $1`; pwd; }
+alias locs="vi ~/.locations"

@@ -1,0 +1,11 @@
+if [ "/bin/bash" ]; then
+  if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+  fi
+fi
+
+# mesg n || true
+
+if [ -f ~/bin/profile ]; then
+  source ~/bin/profile
+fi
