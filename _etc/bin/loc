@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+import argparse
+#import os
+
+# --------------------------------------------------------
+#
+#  READ THE COMMAND LINE ARGUMENTS
+#
+# --------------------------------------------------------
+
+p = argparse.ArgumentParser(description="Provides list of all git repositories. If choice is given"
+ " (either as a number or as an id) then only the respective path is returned.")
+
+p.add_argument("choice", nargs='?')
+#p.add_argument("path", action="store_true", nargs='?', default='.', help="the root of the directory tree to be scanned")
+#p.add_argument("-q", "--quiet", action="store_true", help="don't give details update on progress	")
+#p.add_argument("-x", "--execute", action="store_true", help="rename is only executed if this flag is given")
+args = p.parse_args()
+
+# print(args); exit()
+
+
+# --------------------------------------------------------
+#
+#  EXECUTION
+#
+# --------------------------------------------------------
+
+import yaml as y
+from os.path import expanduser
+fn = expanduser("~/.locations")
+
+with open(fn, "r") as f:
+	git_repoes = y.load(f)
+
+if args.choice == None:
+	for i,r in enumerate(git_repoes):
+		print ("[%2i] %-8s -> %s" % (i, r[0], r[1]))
+
+else:
+	if args.choice.isdigit():
+		n = int(args.choice)
+		r = git_repoes[n]
+		#print ("[%2i] %-8s -> %s" % (n, r[0], r[1]))
+		print (r[1])
+
+	else:
+		rp1 = {}
+		for r in git_repoes:
+		    rp1[r[0]] = r[1]
+		print (rp1[args.choice])

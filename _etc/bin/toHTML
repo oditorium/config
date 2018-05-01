@@ -1,0 +1,111 @@
+#!/usr/bin/env python3 
+
+import os
+import sys
+import Markdown as mdwn
+
+
+def convertToHtml(md, style, template):
+    """convert markdown text to html, return html"""
+    html = mdwn.markdown(md);
+    if not template is None:
+        if style is None: style = ""
+        html = template.format(style=style, body=html)
+    else:
+        if not style is None:
+            html = "\n<style>\n{}\n</style>\n".format(style)
+    return html
+
+def convertFileToHtmlAndSave (fullSourceName, style=None, template=None):
+    """read md file and convert to html, save with .html extension"""
+
+    sourceName, sourceExt = os.path.splitext(fullSourceName)
+    fullDestName = sourceName + ".html"
+    print("Converting {} to html (output: {})".format(fullSourceName, fullDestName))
+
+    with open(fullSourceName, "r") as f: md = f.read()
+    html = convertToHtml(md, style, template);
+    with open(fullDestName, "w") as f: f.write(html)
+
+STYLE = """
+#body {
+    width: 900px;
+    font-size: 28px;
+    line-height: 1.5;
+    margin-left: 50px;
+    margin-top: 50px;
+    font-family: sans-serif;
+}
+
+h1 {font-size: 200%;}
+h2 {font-size: 130%;}
+h3 {font-size: 110%; text-decoration: underline; }
+h4 {font-size: 100%; font-style: italic;}
+h5 {font-size: 80%; font-weight: normal; font-style: italic;}
+
+h1 {text-align: center;}
+h2 {
+    border-bottom: 3px solid black; border-top: 3px solid black;
+    background-color: #eee;
+    page-break-before: always;
+}
+
+a {font-size: 75%;}
+blockquote {
+    font-size: 80%;
+    font-style: italic;
+    border-left: 3px solid #aaa;
+    padding-left: 10px;
+    margin-left: 100px;
+}
+
+code {
+    display: inline-block;
+    padding: 1px 5px;
+    background-color: #eee;
+    font-size: 70%;
+}
+pre {
+    background-color: #eee;
+    font-size: 75%;
+}
+}
+"""
+
+TEMPLATE = """
+<html>
+    <meta charset="UTF-8">
+
+    <head>
+        <style>
+        {style}
+        </style>
+        <base target="_blank">
+    </head>
+
+    <body>
+        <div id='body'>
+        {body}
+        </div>
+    </body>
+</html>
+"""
+
+def readStyleAndTemplates():
+    """look for style and template files on a number of locations"""
+    style = STYLE
+    template = TEMPLATE
+    return (style, template)
+
+
+if __name__ == "__main__":
+
+    if len (sys.argv) < 2:
+        print ("please provide the name of the file to be converted as first argument")
+        sys.exit(-1);
+
+    fullSourceName = sys.argv[1]
+    style, template = readStyleAndTemplates()
+    for ix in range(1, len (sys.argv)):
+        convertFileToHtmlAndSave(sys.argv[ix], style, template)
+
