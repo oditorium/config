@@ -169,7 +169,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 "------------------------------------------------------------
 " Status bar code
 " https://stackoverflow.com/questions/9065941/how-can-i-change-vim-status-line-colour
- http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim
+" http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim
 
 set laststatus=2            " set the bottom status bar
 

@@ -21,3 +21,15 @@ programming languages), and `200_` for higher level components such as *Django*.
 
 *Full Installs* install a complete server. They pull in all necessary component installs
 as needed, including `000_init`.
+
+
+## Installation
+
+The blessed copy of this repo is on
+[github](https://github.com/oditorium/config).
+To install run
+
+    git clone https://github.com/oditorium/config
+    cd config/components
+    ./000_init
+    ...
