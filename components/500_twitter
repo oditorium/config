@@ -1,0 +1,22 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+# https://github.com/sferik/t
+
+apt -y install ruby-dev
+gem install t
+
+# NOTE: THERE IS A BUG AS OF JUNE 2019. TO FIX:
+# (see https://github.com/sferik/t/commit/b40e2088971811a83f917b22bc928ed8ee30e21b)
+#   cd /var/lib/gems/2.3.0/gems/t-3.1.0/lib/t
+#   vi cli.rb
+#   82 G
+#   :s/Twitter::REST::Client::BASE_URL/Twitter::REST::Request::BASE_URL/
+#   976 G
+#   :s/Twitter::REST::Client::BASE_URL/Twitter::REST::Request::BASE_URL/
+#
+
+# t authorize
+# t accounts
+# cd data/js/tweets
+# egrep '^  "id_str"' 2013_12.js|egrep -o '[0-9]{19}' | while read x; do echo "t delete status -f $x | tee -a logfile"; done
