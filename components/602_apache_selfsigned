@@ -1,0 +1,39 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+# https://www.sslshopper.com/article-how-to-create-and-install-an-apache-self-signed-certificate.html
+
+mkdir -p /etc/apache2/certs
+chown www-data:www-data /etc/apache2/certs
+
+pushd /etc/apache2/certs
+
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout selfsigned.key -out selfsigned.crt
+
+chown www-data:www-data *.crt
+chown www-data:www-data *.key
+chown www-data:www-data *.pem
+
+cat << EOF > /etc/apache2/sites-available/selfsigned.conf
+<VirtualHost _default_:443>
+
+    DocumentRoot /var/www/htmls
+    ErrorLog /var/log/apache2/error_selfsigned.log
+    CustomLog /var/log/apache2/access_selfsigned.log combined
+    SSLEngine on
+    SSLCertificateFile    /etc/apache2/certs/selfsigned.crt
+    SSLCertificateKeyFile /etc/apache2/certs/selfsigned.key
+    IndexIgnore *
+</VirtualHost>
+
+<Directory />
+  Options +Indexes +FollowSymLinks
+</Directory>
+
+EOF
+systemctl reload apache2
+
+
+a2ensite selfsigned
+systemctl reload apache2
+#systemctl start apache2

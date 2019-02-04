@@ -1,0 +1,20 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+apt -y install apache2
+
+mkdir -p /root/bin
+
+cat << EOF > /root/bin/a2start
+systemctl start apache2
+EOF
+
+cat << EOF > /root/bin/a2stop
+systemctl stop apache2
+EOF
+
+cat << EOF > /root/bin/a2reload
+systemctl reload apache2
+EOF
+
+chmod +x /root/bin/a2*
