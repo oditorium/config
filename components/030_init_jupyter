@@ -1,15 +1,14 @@
 #!/bin/bash
-cd "$(dirname "$0")"
+pushd "$(dirname "$0")"
 
 echo ************************************
 echo RUNNING "$0"
 echo ************************************
 echo "$0" >> ~/install.log
 
+apt -y install python3 python3-pip
+pip3 install --upgrade pip
+pip3 install jupyter
+#jupyter notebook --allow-root
 
-apt -y install nodejs
-apt -y install npm
-apt -y install build-essential
-
-nodejs -v
-npm -v
+popd

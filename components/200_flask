@@ -1,6 +1,12 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
+echo ************************************
+echo RUNNING "$0"
+echo ************************************
+echo "$0" >> ~/install.log
+
+
 apt -y update
 apt -y install python3 python3-pip
 apt -y install python3-virtualenv

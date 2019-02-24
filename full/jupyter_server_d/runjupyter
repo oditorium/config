@@ -1,0 +1,5 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+cd NOTEBOOKS
+jupyter notebook --port=8443 --ip=0.0.0.0 --no-browser --certfile=../snakeoil.pem --keyfile=../snakeoil.key

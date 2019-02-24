@@ -1,0 +1,5 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+supervisorctl -c /etc/supervisord_jupyter.conf stop jupyter_http
+supervisorctl -c /etc/supervisord_jupyter.conf stop jupyter_https

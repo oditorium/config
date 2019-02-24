@@ -1,0 +1,88 @@
+*****************************************************************************
+*****************************************************************************
+*****                                                                   *****
+*****                   J U P Y T E R    S E R V E R                    *****
+*****                                                                   *****
+*****************************************************************************
+*****************************************************************************
+
+In order to see this text again run
+
+    less /root/README
+
+
+INTRODUCTION
+============
+
+The purpose of this server is to run as a Jupyter Notebook server in the
+context of a teaching event. IS IS PARAMOUNT THAT NO CONFIDENTIAL OR PRIVATE
+INFORMATION IS STORED ON THE SERVER AS THE CONFIGURATION IS NOTE SAFE.
+
+
+SECURITY WARNING
+================
+
+This server is configured as a Jupyter Notebook server that can be accessed
+via the Internet. NOTE THAT THIS IS A SECURITY RISK AS JUPYTER NOTEBOOK
+ALLOWS TO RUN A SHELL LOCALLY WHICH MIGHT ALLOW AN ATTACKER TO TAKE OVER THE
+SERVER.  The Jupyter Notebook will be protected by a password. HOWEVER THIS
+PASSWORD IS THE SAME FOR ALL USERS, AND THEY WILL BE ABLE TO SEE AND
+INTERFERE WITH EACH OTHERS WORK.
+
+
+SECURITY BEST PRACTICES
+=======================
+
+Therefore please follow those security best practices
+
+- For every event a new server should be built from scratch; alternatively
+  a clean image can be saved and a server can be rebuilt from that clean
+  image. AN IMAGE FROM A SERVER USED IN AN EVENT CAN NOT BE CONSIDERED
+  CLEAN.
+
+- The server should be accessed via https in order to ensure that the
+  password and/or the cookies are safe; note that the https server is
+  usually running on a snakeoil certificate, so browsers will consider the
+  connection unsafe even though it is not.
+
+- The server should only be spun up for the duration of the event. During
+  periods where the students do not need it the server should be taken down,
+  either by executing the `off` command or by pausing the entire server.
+
+- The server should not be used for private and/or confidential data; the
+  exception to this is a single trusted user environment if a strong
+  password is used and the server is accessed via https.
+
+
+QUICK START INSTRUCTIONS
+========================
+
+All command are in `/root`. See next section for details.
+
+- run `password` and choose a password for the server
+- run `on` to launch the server
+- the server will be running on https://*:8443 (1)
+- the server can taken down running `off`
+
+(1) the browser will throw security warnings because the certificate is not
+valid; this is to be expected and not a problem within the general threat
+model of an installation used in a training context without sensitive data
+
+
+KEY COMMANDS PROVIDED
+=====================
+
+The following command scripts are provided in `root`:
+
+- `password`: sets the server password
+- `on`: launches the https server on *:8443 as background process
+- `on_unsafe`: ditto, but the http server on *:8080 (2)
+- `off`: takes the server down (either http or https)
+- `runjupyter`: like on, but in the foreground (kill with ctrl-c)
+- `runjupyter_unsafe`: ditto, but for on_unsafe
+- `clean_jupyter_config`: resets Jupyter config, including password
+
+(2) by default, all `unsafe` commans are disabled; in order to enable them
+the file /home/jupyter/runjupyter_unsafe must be made executable
+
+    chmod +x /home/jupyter/runjupyter_unsafe

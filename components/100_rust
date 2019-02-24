@@ -1,4 +1,10 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
+echo ************************************
+echo RUNNING "$0"
+echo ************************************
+echo "$0" >> ~/install.log
+
+
 curl https://sh.rustup.rs -sSf | sh

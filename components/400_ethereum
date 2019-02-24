@@ -1,6 +1,12 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
+echo ************************************
+echo RUNNING "$0"
+echo ************************************
+echo "$0" >> ~/install.log
+
+
 # https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu
 
 apt -y install software-properties-common

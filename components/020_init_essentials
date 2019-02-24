@@ -1,5 +1,5 @@
 #!/bin/bash
-cd "$(dirname "$0")"
+pushd "$(dirname "$0")"
 
 echo ************************************
 echo RUNNING "$0"
@@ -7,9 +7,9 @@ echo ************************************
 echo "$0" >> ~/install.log
 
 
-apt -y install nodejs
-apt -y install npm
+#apt -y install git
+apt -y install supervisor
 apt -y install build-essential
+apt -y install bc
 
-nodejs -v
-npm -v
+popd

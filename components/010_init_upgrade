@@ -1,5 +1,5 @@
 #!/bin/bash
-cd "$(dirname "$0")"
+pushd "$(dirname "$0")"
 
 echo ************************************
 echo RUNNING "$0"
@@ -7,9 +7,9 @@ echo ************************************
 echo "$0" >> ~/install.log
 
 
-apt -y install nodejs
-apt -y install npm
-apt -y install build-essential
+echo 010_init > ~/install.log
+apt -y update
+apt -y upgrade
+apt -y autoremove
 
-nodejs -v
-npm -v
+popd

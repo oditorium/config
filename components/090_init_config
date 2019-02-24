@@ -1,3 +1,11 @@
+#!/bin/bash
+pushd "$(dirname "$0")"
+
+echo ************************************
+echo RUNNING "$0"
+echo ************************************
+echo "$0" >> ~/install.log
+
 cp ../_etc/home/profile ~/.profile
 cp ../_etc/home/gitconfig ~/.gitconfig
 cp ../_etc/home/gitignore_global ~/.gitignore_global
@@ -13,4 +21,6 @@ chmod +x ~/bin/*
 mkdir -p ~/.vim/pack/bundle/start
 pushd ~/.vim/pack/bundle/start
 git clone https://github.com/tomlion/vim-solidity.git
+popd
+
 popd

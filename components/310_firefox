@@ -1,6 +1,12 @@
 #!/bin/bash
 cd "$(dirname "$0")"
 
+echo ************************************
+echo RUNNING "$0"
+echo ************************************
+echo "$0" >> ~/install.log
+
+
 # https://askubuntu.com/questions/6339/how-do-i-install-the-latest-stable-version-of-firefox
 # https://help.ubuntu.com/community/FirefoxNewVersion
 

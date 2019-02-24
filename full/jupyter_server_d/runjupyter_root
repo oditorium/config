@@ -1,0 +1,4 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+sudo -H -u jupyter /home/jupyter/runjupyter_https

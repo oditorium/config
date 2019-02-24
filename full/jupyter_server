@@ -1,0 +1,65 @@
+#!/bin/bash
+pushd "$(dirname "$0")"
+
+echo ************************************
+echo RUNNING "$0"
+echo ************************************
+echo "$0" >> ~/install.log
+
+# see https://jupyter-notebook.readthedocs.io/en/stable/public_server.html
+# sudo -H -u jupyter jupyter notebook --generate-config
+# sudo -H -u jupyter jupyter notebook password
+# jupyter notebook --certfile=mycert.pem --keyfile mykey.key
+# openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
+
+
+echo INSTALLING COMPONENTS
+
+../components/010_init_upgrade
+../components/020_init_essentials
+#../components/030_init_jupyter
+../components/090_init_config
+
+
+echo INSTALLING JUPYTER
+
+#apt -y install supervisor
+apt -y install python3 python3-pip
+#pip3 install --upgrade pip
+pip3 install jupyter
+
+
+echo ADDING USER JUPYTER
+
+adduser jupyter --gecos "" --disabled-password --disabled-login
+
+
+echo COPYING FILES AND CREATING DIRECTORIES
+
+cp jupyter_server_d/runjupyter /home/jupyter/
+cp jupyter_server_d/runjupyter_unsafe /home/jupyter/
+cp jupyter_server_d/snakeoil.pem /home/jupyter/
+cp jupyter_server_d/snakeoil.key /home/jupyter/
+
+cp jupyter_server_d/README /root/
+cp ../_etc/bin/clean_config /root/
+cp jupyter_server_d/password /root/
+cp jupyter_server_d/clean_jupyter_config /root/
+cp jupyter_server_d/on /root/
+cp jupyter_server_d/on /root/
+cp jupyter_server_d/on_unsafe /root/
+cp jupyter_server_d/off /root/
+cp jupyter_server_d/runjupyter_root /root/runjupyter
+cp jupyter_server_d/runjupyter_unsafe_root /root/runjupyter_unsafe
+cp jupyter_server_d/supervisord_jupyter.conf /etc/
+mv /etc/supervisor /etc/supervisor_disabled
+
+mkdir /home/jupyter/NOTEBOOKS
+chown jupyter:jupyter /home/jupyter/*
+
+less /root/README
+
+sudo -H -u jupyter jupyter notebook --generate-config
+/root/password
+
+popd

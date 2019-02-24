@@ -20,16 +20,21 @@ programming languages), and `200_` for higher level components such as *Django*.
 ## Full Installs
 
 *Full Installs* install a complete server. They pull in all necessary component installs
-as needed, including `000_init`.
+as needed.
 
 
 ## Installation
 
 The blessed copy of this repo is on
 [github](https://github.com/oditorium/config).
-To install run
+
+To install components run
 
     git clone https://github.com/oditorium/config
-    cd config/components
-    ./000_init
-    ...
+    config/components/000_init
+
+and then the other components you want installed. To install a full server
+run the script directly, like here for the jupyter server:
+
+    git clone https://github.com/oditorium/config
+    config/full/jupyter_server
