@@ -2,4 +2,5 @@
 cd "$(dirname "$0")"
 
 cd NOTEBOOKS
-jupyter notebook --port=8443 --ip=0.0.0.0 --no-browser --certfile=../snakeoil.pem --keyfile=../snakeoil.key
+#jupyter notebook --port=8443 --ip=0.0.0.0 --no-browser --certfile=../snakeoil.pem --keyfile=../snakeoil.key
+jupyter notebook --port=8443 --ip=0.0.0.0 --no-browser --certfile=/etc/jupyter/fullchain.pem --keyfile=/etc/jupyter/privkey.pem

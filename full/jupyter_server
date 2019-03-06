@@ -9,7 +9,7 @@ echo "$0" >> ~/install.log
 # see https://jupyter-notebook.readthedocs.io/en/stable/public_server.html
 # sudo -H -u jupyter jupyter notebook --generate-config
 # sudo -H -u jupyter jupyter notebook password
-# jupyter notebook --certfile=mycert.pem --keyfile mykey.key
+# jupyter notebook --certfile=mycert.pem --keyfile=mykey.key
 # openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
 
 
@@ -21,12 +21,43 @@ echo INSTALLING COMPONENTS
 ../components/090_init_config
 
 
+echo INSTALLING CERTBOT
+
+# https://certbot.eff.org/lets-encrypt/ubuntubionic-other
+# certbot certonly --register-unsafely-without-email --standalone -d jupyter.virtcard.co
+# certbot renew
+# /etc/letsencrypt/live/jupyter.virtcard.co/fullchain.pem
+# /etc/letsencrypt/live/jupyter.virtcard.co/privkey.pem
+# /etc/letsencrypt/archive/jupyter.virtcard.co
+
+apt -y install software-properties-common
+add-apt-repository -y universe
+add-apt-repository ppa:certbot/certbot
+apt update
+apt -y install certbot
+mkdir /etc/jupyter
+chown root:jupyter /etc/jupyter
+chmod o-x /etc/jupyter
+
+# RUN THE FOLLOWING CODE TO INSTALL THE CERTS
+# ATTENTION: THEY ARE READABLE FROM WITHIN THE JUPYTER INSTALLATION
+# (not that much of a deal as they can self-generate those certs anyway)
+#
+# certbot certonly --register-unsafely-without-email --standalone -d jupyter.virtcard.co
+# cp /etc/letsencrypt/live/jupyter.virtcard.co/fullchain.pem /etc/jupyter/fullchain.pem
+# cp /etc/letsencrypt/live/jupyter.virtcard.co/privkey.pem /etc/jupyter/privkey.pem
+# chown root:jupyter /etc/jupyter/*
+# chmod o-r /etc/jupyter/*
+
+
 echo INSTALLING JUPYTER
 
 #apt -y install supervisor
 apt -y install python3 python3-pip
 #pip3 install --upgrade pip
 pip3 install jupyter
+pip3 install pusher
+pip3 install watchdog
 
 
 echo ADDING USER JUPYTER
@@ -56,6 +87,8 @@ mv /etc/supervisor /etc/supervisor_disabled
 
 mkdir /home/jupyter/NOTEBOOKS
 chown jupyter:jupyter /home/jupyter/*
+
+ln -s /home/jupyter/NOTEBOOKS /root/NOTEBOOKS
 
 less /root/README
 
