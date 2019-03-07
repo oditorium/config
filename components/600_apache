@@ -6,8 +6,19 @@ echo RUNNING "$0"
 echo ************************************
 echo "$0" >> ~/install.log
 
+# https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-apache-on-ubuntu-16-04
+
 
 apt -y install apache2
+apt -y install apache2-utils
+
+#htpasswd -c /etc/apache2/.htpasswd skl
+#cat /etc/apache2/.htpasswd
+
+#AuthType Basic
+#AuthName "Restricted Content"
+#AuthUserFile /etc/apache2/.htpasswd
+#Require valid-user
 
 mkdir -p /root/bin
 
@@ -21,6 +32,32 @@ EOF
 
 cat << EOF > /root/bin/a2reload
 systemctl reload apache2
+EOF
+
+cat << EOF > nul
+<VirtualHost _default_:443>
+
+    DocumentRoot /var/www/htmls
+    ErrorLog /var/log/apache2/error_selfsigned.log
+    CustomLog /var/log/apache2/access_selfsigned.log combined
+    SSLEngine on
+    SSLCertificateFile    /etc/apache2/certs/selfsigned.crt
+    SSLCertificateKeyFile /etc/apache2/certs/selfsigned.key
+    IndexIgnore *
+    Options +Indexes +FollowSymLinks
+
+</VirtualHost>
+
+<Directory "/var/www/htmls">
+
+    Options -Indexes -FollowSymLinks
+
+    AuthType Basic
+    AuthName "Restricted Content"
+    AuthUserFile /etc/apache2/.htpasswd
+    Require valid-user
+
+</Directory>
 EOF
 
 chmod +x /root/bin/a2*
