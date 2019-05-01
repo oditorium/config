@@ -1,0 +1,22 @@
+import sys
+# https://pypi.org/project/PyQRCode/
+# https://pythonhosted.org/PyQRCode/
+
+class KeyQRCreator():
+
+    COLOR = "black"
+    BACKGROUND = "white"
+    QUIET = 1
+
+    @classmethod
+    def terminal(cls, key):
+        "creates an URL encoded base64 image wrapped into an image tag from a key"
+        qr = qrcode.create(key)
+        return qr.terminal()
+
+
+if __name__ == '__main__':
+    import sys
+    #data = sys.stdin.read()
+    data = sys.argv[1]
+    print(KeyQRCreator.terminal(data))

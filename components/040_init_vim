@@ -6,22 +6,23 @@ echo RUNNING "$0"
 echo ************************************
 echo "$0" >> ~/install.log
 
-cp ../_etc/home/profile ~/.profile
-cp ../_etc/home/gitconfig ~/.gitconfig
-cp ../_etc/home/gitignore_global ~/.gitignore_global
-cp ../_etc/home/locations ~/.locations
-cp ../_etc/home/bash_aliases ~/.bash_aliases
-
-../_etc/pubkeys/install
+cp ../_etc/home/vimrc ~/.vimrc
 
 
-mkdir -p ~/bin
-cp ../_etc/bin/* ~/bin/
-chmod +x ~/bin/*
 
 mkdir -p ~/.vim/pack/bundle/start
+
 pushd ~/.vim/pack/bundle/start
 git clone https://github.com/tomlion/vim-solidity.git
 popd
+
+# http://ctrlpvim.github.io/ctrlp.vim/#installation
+#
+
+pushd ~/.vim
+git clone https://github.com/ctrlpvim/ctrlp.vim.git bundle/ctrlp.vim
+popd
+
+echo  RUN :helptags ~/.vim/bundle/ctrlp.vim/doc in vim
 
 popd

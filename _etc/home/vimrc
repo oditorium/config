@@ -203,9 +203,22 @@ set statusline+=%p%%\ %4l:%-4c                              " %rows row:col
 hi Search ctermbg=159                                       " light blue
 
 "------------------------------------------------------------
-" Always open an additional empty tab
+" Always open an two additional empty tabs
+" define {1,2,3} x Ctrl-k k as "goto tab {1,2,3}"
+tabnew
 tabnew
 tabfirst
+
+:nmap <C-K>k                1gt
+:nmap <C-K><C-K>k           2gt
+:nmap <C-K><C-K><C-K>k      3gt
+
+:command L                  tabn 1
+:command LL                 tabn 2
+:command LLL                tabn 3
+:command LLLL               tabn 4
+:command LLLLL              tabn 5
+
 
 
 
@@ -254,3 +267,17 @@ hi def htmlItalic              term=underline cterm=underline gui=italic
 
 autocmd BufRead,BufNewFile *.md setlocal tw=60 fo=cqt wm=0 indentexpr=""
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" http://ctrlpvim.github.io/ctrlp.vim/#installation
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" http://vimdoc.sourceforge.net/htmldoc/usr_40.html#40.2
+:command Bo :browse oldfiles
+:command EE :Explore
+
+"for ipad and other computers that don't have an escape key
+"assumes you don't need the § key unless you insert text
+:imap §§ <esc>
+:nmap § <esc>
+:vmap § <esc>
+:omap § <esc>
