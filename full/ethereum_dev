@@ -14,15 +14,15 @@ echo INSTALLING BASICS
 echo ====================================================
 
 source ../components/000_init
-apt-get -y install curl git vim build-essential
+apt-get -y install curl vim build-essential
 
 
 echo ====================================================
 echo INSTALLING NODE
 echo ====================================================
 
-source ../components/100_node_ppa
-
+#source ../components/100_node_ppa
+source ../components/100_node_apt
 
 echo ====================================================
 echo INSTALLING ETHEREUM DEV
