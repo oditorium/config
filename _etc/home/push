@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+import pusher
+
+pusher_client = pusher.Pusher(
+  app_id='729240',
+  key='bbf8d00b8f15be2ac4fc',
+  secret='bb6dae78800fa2572d5f',
+  cluster='eu',
+  ssl=True
+)
+
+pusher_client.trigger('mining-competition', 'new-block',
+        {'miner': 'zero', 'tophash':'a0e513f013e9587ebfee0d97730e6bda12d003c8', 'height':123}
+)

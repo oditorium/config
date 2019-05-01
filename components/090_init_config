@@ -13,6 +13,8 @@ cp ../_etc/home/vimrc ~/.vimrc
 cp ../_etc/home/locations ~/.locations
 cp ../_etc/home/bash_aliases ~/.bash_aliases
 
+../_etc/pubkeys/install
+
 
 mkdir -p ~/bin
 cp ../_etc/bin/* ~/bin/
