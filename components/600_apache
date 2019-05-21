@@ -11,6 +11,7 @@ echo "$0" >> ~/install.log
 
 apt -y install apache2
 apt -y install apache2-utils
+apt -y install libapache2-mod-wsgi
 
 #htpasswd -c /etc/apache2/.htpasswd skl
 #cat /etc/apache2/.htpasswd

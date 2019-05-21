@@ -6,10 +6,14 @@
 	excludesfile = ~/.gitignore_global
 	ignorecase = false
 
+[receive]
+
+        denyCurrentBranch = warn
+
 [alias]
         s = status
 	rl = reflog
-	
+
 	a = add
         co = checkout
 	ci = commit
@@ -19,17 +23,17 @@
 	caqq = commit -a -m TEMP-COMMIT-NEEDS-TO-BE-CHANGED
 	cad = commit  -m ********doc README.php
 	cadd = commit -m ********+  db/dbconnect.php
-        
+
 	l = log --pretty=oneline  --graph --abbrev-commit -10 --decorate
         ll = log --pretty=oneline  --graph --abbrev-commit --decorate
         lla = log --pretty=oneline  --graph --abbrev-commit --decorate --all
 	lb = log --graph --all --decorate --simplify-by-decoration --oneline
-	
+
 	b = branch
 	be = branch --edit-description
 	bm = branch --merged
 	bn = branch --no-merged
-	
+
 	dt = difftool
 	mt = mergetool
 
@@ -38,15 +42,16 @@
 	rb2 = rebase -i HEAD^^^^^^^^^^^^^^^^^^^^
 	rb3 = rebase -i HEAD^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	applyto = rebase -i
-	cp = cherry-pick -x 
+	cp = cherry-pick -x
 	rba = rebase --abort
 	rbs = rebase --skip
 	rbc = rebase --continue
 	rbr = checkout --theirs README.md
 
-	rsh = reset --hard
-	rss = reset --soft
-	rsd = reset HEAD^
+	rsh   = reset --hard
+	rshh  = reset --hard HEAD
+	rss   = reset --soft
+	rsd   = reset HEAD^
 
 	p = stash
 	pp = stash pop
@@ -71,15 +76,20 @@
 
 [diff]
 	tool = opendiff
+
 [difftool]
 	prompt = 0
+
 [merge]
 	tool = opendiff
+
 [mergetool]
 	prompt = 0
+
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+
 [push]
 	default = simple
