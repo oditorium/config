@@ -1,14 +1,17 @@
 #!/bin/bash
 pushd "$(dirname "$0")"
+pwd
 
-echo ************************************
+echo "************************************"
 echo RUNNING "$0"
-echo ************************************
+echo "************************************"
 echo "$0" >> ~/install.log
 
 ./010_init_upgrade
 ./020_init_essentials
 ./030_init_jupyter
+./040_init_vim
 ./090_init_config
 
+screenfetch
 popd

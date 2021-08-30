@@ -1,20 +1,28 @@
 #!/bin/bash
-cd "$(dirname "$0")"
+pushd "$(dirname "$0")"
+pwd
 
-echo ************************************
+# Target: Ubuntu 20.04 (August 2021)
+
+
+echo "************************************"
 echo RUNNING "$0"
-echo ************************************
+echo "************************************"
 echo "$0" >> ~/install.log
 
 
 # http://www.techtonet.com/how-to-install-and-execute-truffle-on-an-ubuntu-16-04/
+# https://abhibvp003.medium.com/how-to-install-and-execute-truffle-on-an-ubuntu-16-04-7d0ff6458c9b
+# https://cdmana.com/2021/05/20210506173242922f.html
+# https://nodejs.org/en/about/releases/
+
 
 echo ====================================================
 echo INSTALLING BASICS
 echo ====================================================
 
-source ../components/000_init
-apt-get -y install curl vim build-essential
+../components/000_init
+apt -y install curl vim build-essential
 
 
 echo ====================================================
@@ -28,17 +36,20 @@ echo ====================================================
 echo INSTALLING ETHEREUM DEV
 echo ====================================================
 
-npm install -g express
-npm install -g truffle
-npm install -g mocha
-npm install -g ganache-cli
+# ethereumjs-testrpc has been renamed to ganache-cli
 
+npm install -g ethereumjs-testrpc 
+npm install -g truffle
+npm install -g ganache-cli
+npm install -g express
+npm install -g mocha
+npm install -g @openzeppelin/contracts
 
 echo ====================================================
 echo INSTALLING RESILIO
 echo ====================================================
 
-source ../components/300_resilio
+../components/300_resilio
 
 echo ====================================================
 echo VERSIONS
@@ -50,3 +61,12 @@ npm -v
 
 echo === ETHEREUM ===
 truffle version
+ganache-cli --version
+echo mocha
+mocha --version
+#express --version
+
+
+
+
+

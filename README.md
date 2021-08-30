@@ -38,3 +38,11 @@ run the script directly, like here for the jupyter server:
 
     git clone https://github.com/oditorium/config
     config/full/jupyter_server
+
+or here for the Ethereum development environment (Truffle, Ganache, etc)
+
+    git clone https://github.com/oditorium/config
+    config/full/ethereum_dev
+
+
+

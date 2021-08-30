@@ -1,9 +1,10 @@
 #!/bin/bash
 pushd "$(dirname "$0")"
+pwd
 
-echo ************************************
+echo "************************************"
 echo RUNNING "$0"
-echo ************************************
+echo "************************************"
 echo "$0" >> ~/install.log
 
 
@@ -12,6 +13,9 @@ apt -y install supervisor
 apt -y install build-essential
 apt -y install bc
 apt -y install mosh
+apt -y install screenfetch
+apt -y install tree
+
 
 pip3 install pyqrcode
 

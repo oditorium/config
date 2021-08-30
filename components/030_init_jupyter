@@ -1,9 +1,10 @@
 #!/bin/bash
 pushd "$(dirname "$0")"
+pwd
 
-echo ************************************
+echo "************************************"
 echo RUNNING "$0"
-echo ************************************
+echo "************************************"
 echo "$0" >> ~/install.log
 
 apt -y install python3 python3-pip

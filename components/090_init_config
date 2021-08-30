@@ -1,9 +1,9 @@
 #!/bin/bash
 pushd "$(dirname "$0")"
 
-echo ************************************
+echo "************************************"
 echo RUNNING "$0"
-echo ************************************
+echo "************************************"
 echo "$0" >> ~/install.log
 
 cp ../_etc/home/profile ~/.profile
@@ -23,5 +23,13 @@ mkdir -p ~/.vim/pack/bundle/start
 pushd ~/.vim/pack/bundle/start
 git clone https://github.com/tomlion/vim-solidity.git
 popd
+
+pushd ~/.vim
+git clone https://github.com/ctrlpvim/ctrlp.vim.git bundle/ctrlp.vim
+popd
+
+echo ***
+echo  RUN :helptags ~/.vim/bundle/ctrlp.vim/doc in vim
+echo ***
 
 popd
