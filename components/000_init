@@ -7,6 +7,9 @@ echo RUNNING "$0"
 echo "************************************"
 echo "$0" >> ~/install.log
 
+ufw allow 22
+ufw enable 
+
 ./010_init_upgrade
 ./020_init_essentials
 ./030_init_jupyter
