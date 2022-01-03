@@ -1,0 +1,40 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+
+echo ************************************
+echo RUNNING "$0"
+echo ************************************
+echo "$0" >> ~/install.log
+
+# https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop
+# https://linuxconfig.org/how-to-install-latex-on-ubuntu-20-04-focal-fossa-linux
+
+# 160MB (basics only)
+#apt -y install texlive-base
+
+# 203 MB
+#apt -y install texlive-latex-recommended
+
+# 269 MB (recommended)
+#apt -y install texlive
+
+# 464 MB (recommended; minimum to run the test file)
+apt -y install texlive-latex-extra
+
+# 5903 MB (HUGE)
+#apt -y install texlive-full
+
+# also get jupyter to transfer files
+#apt -y install python3 python3-pip
+#pip3 install --upgrade pip
+pip3 install jupyter
+# jupyter notebook --allow-root
+
+mkdir ~/textest
+cp ../_etc/misc/test.tex ~/textest
+pushd ~/textest
+pdflatex test.tex
+popd
+
+
+
