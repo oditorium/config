@@ -45,4 +45,14 @@ or here for the Ethereum development environment (Truffle, Ganache, etc)
     config/full/ethereum_dev
 
 
+Note: to be able to mkae changes you need to either run
+
+    git clone git@github.com:oditorium/config.git
+
+or
+
+    git remote add hub git@github.com:oditorium/config.git
+
+
+
 
