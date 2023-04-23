@@ -45,3 +45,25 @@ git remote add a3 root@64.226.101.44:/root/Arbbot
 git remote add a3 root@64.226.101.44:/root/config
 git remote remove a3
 `
+
+# ;*******************************************************************
+# ; carbon_fastlane
+# ;*******************************************************************
+# [program:carbon_fastlane]
+# command=/root/Arbbot/run_supervisor
+# autostart=true
+# autorestart=true
+# startsecs=10
+# startretries=3
+# killasgroup=true
+# stopasgroup=true
+# redirect_stderr=false
+# stdout_logfile=/var/log/carbon_fastlane_output.log
+# stderr_logfile=/var/log/carbon_fastlane_error.log
+
+# pg_hba.conf
+# host all all 77.101.165.176/0 trust
+# host all all 103.209.254.100/0 trust
+
+# postgresql.conf
+# listen_addresses = '*'
