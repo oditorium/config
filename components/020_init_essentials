@@ -19,7 +19,8 @@ pip3 install pyqrcode
 
 # https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart
 apt -y install postgresql postgresql-contrib
-# systemctl start postgresql.service
+# systemctl restart postgresql.service
+# systemctl enable postgresql.service
 # sudo -i -u postgres
 # psql
 # ALTER USER postgres WITH PASSWORD 'postgres';
