@@ -15,7 +15,6 @@ apt -y install bc
 apt -y install mosh
 apt -y install screenfetch
 apt -y install tree
-pip3 install pyqrcode
 
 # https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart
 apt -y install postgresql postgresql-contrib
